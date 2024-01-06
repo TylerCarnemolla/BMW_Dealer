@@ -1,20 +1,18 @@
 import Input from "./Input"
-import Button from "./Button"
 import {useForm} from 'react-hook-form'
-
 import { server_calls } from "../api/server"
 import {useDispatch, useStore} from 'react-redux'
-import { chooseName, chooseEmail, choosePhone, chooseAddress } from "../redux/slices/RootSlice"
+import { chooseMake, chooseModel, chooseYear, chooseColor, choosePrice} from "../redux/slices/RootSlice"
 
 //interfaces
-interface ContactFormProps{
+interface CarFormProps{
     id?:string []
     onClose: () => void;
     refreshData: () => void; 
 }
 
-// const ContactsForm = (props:ContactFormProps) => {
-const ContactsForm: React.FC<ContactFormProps> = (props) => {  
+// const ContactsForm = (props:CarFormProps) => {
+const CarForm: React.FC<CarFormProps> = (props) => {  
     const {register, handleSubmit} = useForm({})
     const dispatch = useDispatch();
     const store = useStore();
@@ -28,12 +26,12 @@ const ContactsForm: React.FC<ContactFormProps> = (props) => {
             event.target.reset()
         }else{
             //use dispatch to update our state in our store
-            dispatch(chooseName(data.name))
-            dispatch(chooseEmail(data.email))
-            dispatch(choosePhone(data.phone_number))
-            dispatch(chooseAddress(data.address))
+            dispatch(chooseMake(data.Make))
+            dispatch(chooseModel(data.Model))
+            dispatch(chooseYear(data.Year))
+            dispatch(chooseColor(data.Color))
+            dispatch(choosePrice(data.Price))
             await server_calls.create(store.getState())
-            alert("User Created")
             props.onClose()
             props.refreshData()
         }
@@ -43,25 +41,29 @@ const ContactsForm: React.FC<ContactFormProps> = (props) => {
     <div> 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-            <label htmlFor="name">Contact Name</label>
-            < Input {...register('name')} name='name' placeholder="Name"/>
+            <label htmlFor="Make">Brand Name</label>
+            < Input {...register('Make')} name='Make' placeholder="Make"/>
         </div>
         <div>
-            <label htmlFor="email">Email</label>
-            < Input {...register('email')} name='email' placeholder="Email"/>
+            <label htmlFor="Model">Model</label>
+            < Input {...register('Model')} name='Model' placeholder="Model"/>
         </div>
         <div>
-            <label htmlFor="phone_number">Phone Number</label>
-            < Input {...register('phone_number')} name='phone_number' placeholder="Phone Number"/>
+            <label htmlFor="Year">Year</label>
+            < Input {...register('Year')} name='Year' placeholder="Year"/>
         </div>
         <div>
-            <label htmlFor="address">Address</label>
-            < Input {...register('address')} name='address' placeholder="Address"/>
+            <label htmlFor="address">Color</label>
+            < Input {...register('Color')} name='Color' placeholder="Color"/>
+        </div>
+        <div>
+            <label htmlFor="address">Price</label>
+            < Input {...register('Price')} name='Price' placeholder="Price"/>
         </div>
         <div className="flex p-1">
-            <Button className="flex justify-start m-3 bg-slate-300 p-2 rounded hover:bg-slate-800 text-white">
+            <button className="flex justify-start m-3 bg-slate-300 p-2 rounded hover:bg-slate-800 text-white">
                 Submit
-            </Button>
+            </button>
         </div>
         
         
@@ -72,5 +74,5 @@ const ContactsForm: React.FC<ContactFormProps> = (props) => {
   )
 }
 
-export default ContactsForm
+export default CarForm
 

@@ -1,4 +1,4 @@
-import ContactsForm from "./CarForm";
+import CarForm from "./CarForm";
 
 
 type ModalProps = {
@@ -34,7 +34,7 @@ const Modal: React.FC<ModalProps> = (props) => {
                 </p>
             </div>
             <div className="flex flex-col items-center text-center my-3 p-2">
-              <ContactsForm refreshData = {props.refreshData} onClose={props.onClose} id={props.id}/>
+              <CarForm refreshData = {props.refreshData} onClose={props.onClose} id={props.id}/>
             </div>
           </div>
 

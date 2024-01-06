@@ -9,7 +9,6 @@ export const useGetData = () => {
         setData(result)
     }
 
-    //useEffect on mount
     useEffect( () => {
         handleDataFetch();
     }, [])
