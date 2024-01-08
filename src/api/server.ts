@@ -1,8 +1,8 @@
-const token = '###'
+const token = 'bdf34de6f09bb9c8c741329a6fcb843581428a78279906c5'
 
 export const server_calls = {
     get: async () => {
-        const response = await fetch(`####`,{
+        const response = await fetch(`https://car-inventory-1okg.onrender.com/api/cars`,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -17,8 +17,10 @@ export const server_calls = {
         return await response.json()
     },
 
-    create: async(data: any = {}) => {
-        const response = await fetch(`####`,{
+    create: async(data: any = {}) => {  
+        console.log(JSON.stringify(data))
+        console.log('Im here')
+        const response = await fetch(`https://car-inventory-1okg.onrender.com/api/cars`,{          
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +29,7 @@ export const server_calls = {
             body: JSON.stringify(data)
         });
         const body = await response.json()
-        console.log(body)
+      
         if(!response.ok){
             throw new Error('Failed to Create new data on server')
         }
@@ -35,7 +37,7 @@ export const server_calls = {
         return body
     },
     update: async (id:string, data:any = {}) => {
-        const response = await fetch(`####/${id}`, {
+        const response = await fetch(`https://car-inventory-1okg.onrender.com/api/cars/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -49,7 +51,7 @@ export const server_calls = {
         
     },
     delete: async(id:string) => {
-        const response = await fetch(`#####/${id}`,{
+        const response = await fetch(`https://car-inventory-1okg.onrender.com/api/cars/${id}`,{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

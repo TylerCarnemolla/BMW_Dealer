@@ -6,18 +6,17 @@ import { useGetData } from '../My-Hooks/FetchData';
 
 const columns: GridColDef[] = [
   {field: 'id', headerName: "ID", width:90, hide: true},
-  {field: 'Make', headerName: "Brand Name", flex: 1},
-  {field: 'Model', headerName: "Model", flex:1},
-  {field: 'Year', headerName:"Year", flex:1},
-  {field: 'Color', headerName:"Color", flex:2},
-  {field: 'Price', headerName: "Price", flex:2}
+  {field: 'brand', headerName: "Brand Name", flex: 1},
+  {field: 'model', headerName: "Model", flex:1},
+  {field: 'year', headerName:"Year", flex:1},
+  {field: 'color', headerName:"Color", flex:2},
 ]
 
 
 function DataTable() {
   let [open, setOpen ] = useState(false)
 
-  const { contactData, getData} = useGetData();
+  const { carData, getData} = useGetData();
   const[selectionModel, setSelectionModel] = useState<string[]>([])
 
 
@@ -65,7 +64,7 @@ function DataTable() {
         style = { {height: 400, width: '100%'}}
         >
           <h2 className="p-3 bg-slate-300 my-2 rounded">Inventory</h2>
-          <DataGrid rows={contactData} columns={columns} rowsPerPageOptions={[5]}
+          <DataGrid rows={carData} columns={columns} rowsPerPageOptions={[5]}
           checkboxSelection={true}
           onRowSelectionModelChange={(item:any)=> {
             setSelectionModel(item)

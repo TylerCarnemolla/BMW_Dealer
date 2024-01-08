@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 
 
+
 function Navbar() {
     const [isVisable, setIsVisable]= useState(false) //the default is false menaing not visable
 

@@ -1,8 +1,9 @@
 import Input from "./Input"
+import Button from "./Button"
 import {useForm} from 'react-hook-form'
 import { server_calls } from "../api/server"
 import {useDispatch, useStore} from 'react-redux'
-import { chooseMake, chooseModel, chooseYear, chooseColor, choosePrice} from "../redux/slices/RootSlice"
+import { chooseBrand, chooseModel, chooseYear, chooseColor} from "../redux/slices/RootSlice"
 
 //interfaces
 interface CarFormProps{
@@ -11,7 +12,7 @@ interface CarFormProps{
     refreshData: () => void; 
 }
 
-// const ContactsForm = (props:CarFormProps) => {
+// const CarForm = (props:CarFormProps) => {
 const CarForm: React.FC<CarFormProps> = (props) => {  
     const {register, handleSubmit} = useForm({})
     const dispatch = useDispatch();
@@ -26,11 +27,10 @@ const CarForm: React.FC<CarFormProps> = (props) => {
             event.target.reset()
         }else{
             //use dispatch to update our state in our store
-            dispatch(chooseMake(data.Make))
-            dispatch(chooseModel(data.Model))
-            dispatch(chooseYear(data.Year))
-            dispatch(chooseColor(data.Color))
-            dispatch(choosePrice(data.Price))
+            dispatch(chooseBrand(data.brand))
+            dispatch(chooseModel(data.model))
+            dispatch(chooseYear(data.year))
+            dispatch(chooseColor(data.color))
             await server_calls.create(store.getState())
             props.onClose()
             props.refreshData()
@@ -41,29 +41,25 @@ const CarForm: React.FC<CarFormProps> = (props) => {
     <div> 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-            <label htmlFor="Make">Brand Name</label>
-            < Input {...register('Make')} name='Make' placeholder="Make"/>
+            <label htmlFor="brand">Brand Name</label>
+            < Input {...register('brand')} name='Brand' placeholder="Brand"/>
         </div>
         <div>
-            <label htmlFor="Model">Model</label>
-            < Input {...register('Model')} name='Model' placeholder="Model"/>
+            <label htmlFor="model">Model</label>
+            < Input {...register('model')} name='Model' placeholder="Model"/>
         </div>
         <div>
-            <label htmlFor="Year">Year</label>
-            < Input {...register('Year')} name='Year' placeholder="Year"/>
+            <label htmlFor="year">Year</label>
+            < Input {...register('year')} name='Year' placeholder="Year"/>
         </div>
         <div>
-            <label htmlFor="address">Color</label>
-            < Input {...register('Color')} name='Color' placeholder="Color"/>
-        </div>
-        <div>
-            <label htmlFor="address">Price</label>
-            < Input {...register('Price')} name='Price' placeholder="Price"/>
+            <label htmlFor="color">Color</label>
+            < Input {...register('color')} name='Color' placeholder="Color"/>
         </div>
         <div className="flex p-1">
-            <button className="flex justify-start m-3 bg-slate-300 p-2 rounded hover:bg-slate-800 text-white">
+            <Button className="flex justify-start m-3 bg-slate-300 p-2 rounded hover:bg-slate-800 text-white">
                 Submit
-            </button>
+            </Button>
         </div>
         
         
