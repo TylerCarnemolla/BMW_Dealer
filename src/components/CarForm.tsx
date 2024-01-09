@@ -1,7 +1,7 @@
 import Input from "./Input"
 import Button from "./Button"
 import {useForm} from 'react-hook-form'
-import { server_calls } from "../api/server"
+import { server_calls } from "../api/server.ts"
 import {useDispatch, useStore} from 'react-redux'
 import { chooseBrand, chooseModel, chooseYear, chooseColor} from "../redux/slices/RootSlice"
 

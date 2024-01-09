@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import Modal from './Modal'
+import Button from './Button';
 import { server_calls } from '../api/server'
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
-import { useGetData } from '../My-Hooks/FetchData';
+import { useGetData } from '../custom_hooks/FetchData';
 
 const columns: GridColDef[] = [
-  {field: 'id', headerName: "ID", width:90, hide: true},
+  {field: 'id', headerName: "ID", width:90},
   {field: 'brand', headerName: "Brand Name", flex: 1},
   {field: 'model', headerName: "Model", flex:1},
   {field: 'year', headerName:"Year", flex:1},
@@ -27,6 +28,7 @@ function DataTable() {
   const handleClose = () => {
     setOpen(false)
   }
+  
 
   const deleteData = () => {
     server_calls.delete(selectionModel[0]);
@@ -38,6 +40,8 @@ function DataTable() {
   const refreshData = () => {
     getData();
   };
+
+
 
 
   return (
@@ -56,17 +60,17 @@ function DataTable() {
 
           </button>
         </div>
-        <button onClick={handleOpen} className="p-3 bg-slate-300 m-3 rounded hover:bg-slate-800 hover:text-white" >Update</button>
-        <button onClick={deleteData} className="p-3 bg-slate-300 m-3 rounded hover:bg-slate-800 hover:text-white" >Delete</button>
+        <Button onClick={handleOpen} className="p-3 bg-slate-300 m-3 rounded hover:bg-slate-800 hover:text-white" >Update</Button>
+        <Button onClick={deleteData} className="p-3 bg-slate-300 m-3 rounded hover:bg-slate-800 hover:text-white" >Delete</Button>
       </div>
       {/* data table section */}
       <div className={open? "hidden": "container mx-10 my-5 flex flex-col"}
-        style = { {height: 400, width: '100%'}}
+        style = {{height: 400, width: '100%'}}
         >
           <h2 className="p-3 bg-slate-300 my-2 rounded">Inventory</h2>
           <DataGrid rows={carData} columns={columns} rowsPerPageOptions={[5]}
           checkboxSelection={true}
-          onRowSelectionModelChange={(item:any)=> {
+          onSelectionModelChange={(item:any)=> {
             setSelectionModel(item)
           }}
           />

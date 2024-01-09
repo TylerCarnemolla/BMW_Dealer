@@ -58,5 +58,10 @@ export const server_calls = {
                 'x-access-token': `Bearer ${token}`
             }
         })
+        if(!response.ok){
+            throw new Error('Failed to update data on server.')
+        }
+        return;
+        
     }
 }

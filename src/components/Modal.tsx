@@ -1,7 +1,8 @@
 import CarForm from "./CarForm";
+import React from "react";
 
 
-type ModalProps = {
+type Props = {
   id?: string[];
   open:boolean;
   onClose: () => void;
@@ -10,7 +11,7 @@ type ModalProps = {
 
 // const Modal = (props: Props) => {
 //   if( !props.open ) return (<></>);
-const Modal: React.FC<ModalProps> = (props) => {
+const Modal: React.FC<Props> = (props) => {
   if (!props.open) return <></>;
 
 
