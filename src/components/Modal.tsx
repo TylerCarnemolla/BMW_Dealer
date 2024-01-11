@@ -16,20 +16,21 @@ const Modal: React.FC<Props> = (props) => {
 
 
   return (
+    <div className="flex justify-center ">
 
     <div
-      className='fixed w-full h-full flex overflow-auto z-1 justify-center align-middle bg-grey-300 bg-opacity-25'
+      className="flex  justify-center"
       onClick={props.onClose}
       >
         <div
-          className='max-w-600px w-2/5 fixed flex z-1 mt-20 bg-white shadow-xl rounded'
+          className=' flex fixed   z-1 mt-20 shadow-2xl rounded'
           onClick={(e)=>{
             e.stopPropagation()
           }}
         >
           <div className='w-full flex flex-col'>
             <div className="flex flex-row space-apart">
-              <p className="flex justify-start m-3 bg-slate-300 p-2 rounded hover:bg-slate-800 text-white"
+              <p className="flex justify-center p-3 m-5 rounded-lg bg-blue-500 border-2 border-blue-300 hover:bg-blue-300"
                 onClick={props.onClose}>
                 X
                 </p>
@@ -40,6 +41,7 @@ const Modal: React.FC<Props> = (props) => {
           </div>
 
       </div>
+    </div>
     </div>
   )
 }

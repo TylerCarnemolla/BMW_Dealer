@@ -40,7 +40,7 @@ function Navbar() {
         <div className='block'>
             <button 
                     onClick = {dropDown}
-                    className='flex items-center px-3 py-2 text-teal-200 border rounded
+                    className='flex items-center px-3 py-2 text-white border rounded
                     border-white hover:text-slate-300 hover:border-slate-300'>
             
                     <i className='fas fa-bars'></i>
@@ -88,20 +88,20 @@ function Navbar() {
                     </button>
                     {
                          !auth.currentUser?
-                         <Button className='p-3 m-5 bg-teal-400 justify-center'>
+                         <Button className='p-3 m-5 rounded-lg bg-blue-500 border-2 border-blue-300 hover:bg-blue-300 justify-center'>
                              <div>
                                  <Link to="/" onClick={() => {signInOnClick()}} className='flex place-items-center 
-                                 mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white'>
+                                lg:inline-block lg:mt-0 text-white hover:text-white'>
                                      Login
  
                                  </Link>
                              </div>
                          </Button>
                          :
-                         <Button className='p-3 m-5 bg-teal-400 justify-center'>
+                         <Button className='p-3 m-5 rounded-lg bg-blue-500 border-2 border-blue-300 hover:bg-blue-300 justify-center'>
                              <div>
                                  <Link to="/" onClick={() => {signOutOnClick()}} className='flex place-items-center 
-                                 mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white'>
+                                 lg:inline-block lg:mt-0 text-white hover:text-white'>
                                      Sign Out
  
                                  </Link>
