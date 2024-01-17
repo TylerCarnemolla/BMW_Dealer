@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import Modal from './Modal'
-import Button from './Button';
+
 import { server_calls } from '../api/server'
 import {DataGrid, GridColDef} from '@mui/x-data-grid';
 import { useGetData } from '../custom_hooks/FetchData';
@@ -70,7 +70,7 @@ function DataTable() {
         >
           <h2 className="p-3 bg-slate-300 my-2 rounded">Inventory</h2>
           
-          <DataGrid rows={carData} columns={columns} rowsPerPageOptions={[5]}
+          <DataGrid rows={carData} columns={columns}
           checkboxSelection={true}
           onRowSelectionModelChange={(item:any)=> {
             setSelectionModel(item)

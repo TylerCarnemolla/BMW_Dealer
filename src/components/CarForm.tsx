@@ -2,7 +2,7 @@ import Input from "./Input"
 import Button from "./Button"
 import {useForm} from 'react-hook-form'
 import { server_calls } from "../api/server.ts"
-import {useDispatch, useStore} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { chooseBrand, chooseModel, chooseYear, chooseColor} from "../redux/slices/RootSlice"
 
 
@@ -17,7 +17,7 @@ interface CarFormProps{
 const CarForm: React.FC<CarFormProps> = (props) => {  
     const {register, handleSubmit} = useForm({})
     const dispatch = useDispatch();
-    const store = useStore();
+
 
     const onSubmit = async (data:any, event:any) =>{
         console.log(`ID: ${props.id}`);
